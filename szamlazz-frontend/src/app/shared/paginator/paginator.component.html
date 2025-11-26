@@ -1,0 +1,7 @@
+<div class="paginator">
+  <button (click)="previous()" [disabled]="pageNumber === 0"> bal </button>
+  
+  <span>{{ pageNumber + 1 }}. oldal </span>
+  
+  <button (click)="next()" [disabled]="pageNumber + 1 >= totalPages">jobb</button>
+</div>
