@@ -5,8 +5,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum JobEnum {
   KERTESZ("KERTESZ"),
-  HENTES("HETNES"),
+  HENTES("HENTES"),
   PEK("PEK");
 
   private final String type;
+
+  public String getType() {
+    return type;
+  }
 }
