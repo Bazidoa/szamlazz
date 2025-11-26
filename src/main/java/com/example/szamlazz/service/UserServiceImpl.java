@@ -1,8 +1,8 @@
 package com.example.szamlazz.service;
 
 import com.example.szamlazz.mapper.UserMapper;
-import com.example.szamlazz.model.User;
 import com.example.szamlazz.model.UserVo;
+import com.example.szamlazz.model.Usr;
 import com.example.szamlazz.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import java.util.Optional;
@@ -25,12 +25,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Page<User> findUsers(Pageable pageable) {
+    public Page<Usr> findUsers(Pageable pageable) {
         return userRepository.findAll(pageable);
     }
 
     @Override
-    public List<User> getUsers() {
+    public List<Usr> getUsers() {
         return userRepository.findAll();
     }
 

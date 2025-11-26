@@ -1,36 +1,46 @@
-<form [formGroup]="userForm">
-
-    <label>Firstname</label>
-    <input type="text" formControlName="firstname">
-    @if(userForm.get('firstname')?.invalid && userForm.get('firstname')?.touched){
-    <div>Firstname is required (2-64 characters)</div>
-    }
-
-    <label>Lastname</label>
-    <input type="text" formControlName="lastname">
-    @if (userForm.get('lastname')?.invalid && userForm.get('lastname')?.touched){
-    <div>
-        Lastname is required (2-64 characters)
-    </div>
-    }
-
-    <label>Address</label>
-    <input type="text" formControlName="address">
-    @if(userForm.get('address')?.invalid && userForm.get('address')?.touched){
-    <div>Max length is 128</div>
-    }
-
-    <label>Telephone</label>
-    <input type="text" formControlName="telephone">
-
-    <label>Job</label>
-    <select formControlName="job">
-        @for(job of jobOptions; track job){
-            <option [value]="job">{{ job }}</option>
+<form [formGroup]="userForm" class="form-container">
+    <div class="form-row">
+        <label>Vezetéknév*</label>
+        <input type="text" formControlName="firstname">
+        @if(userForm.get('firstname')?.invalid && userForm.get('firstname')?.touched){
+        <div class="form-error">Firstname is required (2-64 characters)</div>
         }
-    </select>
+    </div>
+    <div class="form-row">
+        <label>Keresztnév*</label>
+        <input type="text" formControlName="lastname">
+        @if (userForm.get('lastname')?.invalid && userForm.get('lastname')?.touched){
+        <div class="form-error">
+            Lastname is required (2-64 characters)
+        </div>
+        }
+    </div>
+    <div class="form-row">
+        <label>Cím</label>
+        <input type="text" formControlName="address">
+        @if(userForm.get('address')?.invalid && userForm.get('address')?.touched){
+        <div class="form-error">Max length is 128</div>
+        }
 
-    <label>
-        <input type="checkbox" formControlName="active"> Active
-    </label>
+    </div>
+    <div class="form-row">
+        <label>Telefon</label>
+        <input type="text" formControlName="telephone">
+        @if(userForm.get('telephone')?.invalid && userForm.get('telephone')?.touched){
+        <div class="form-error">Please fill it out with a correct phone number</div>
+        }
+
+    </div>
+    <div class="form-row">
+        <label>Job*</label>
+        <ng-select formControlName="job">
+            @for(job of jobOptions; track job){
+            <ng-option [value]="job">{{ job | jobDisplay }}</ng-option>
+            }
+        </ng-select>
+    </div>
+    <div class="form-row">
+        <label>Aktív</label>
+        <input type="checkbox" formControlName="active">
+    </div>
 </form>

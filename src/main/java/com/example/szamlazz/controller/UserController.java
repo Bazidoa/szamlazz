@@ -1,27 +1,22 @@
 package com.example.szamlazz.controller;
 
 import com.example.szamlazz.mapper.UserMapper;
-import com.example.szamlazz.model.User;
 import com.example.szamlazz.model.UserCreateRequest;
 import com.example.szamlazz.model.UserVo;
+import com.example.szamlazz.model.Usr;
 import com.example.szamlazz.service.UserService;
-import java.util.UUID;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 
 @RestController
@@ -37,7 +32,7 @@ public class UserController {
     }
 
     @GetMapping("/search")
-    public Page<User> findUsers(Pageable pageable) {
+    public Page<Usr> findUsers(Pageable pageable) {
         return userService.findUsers(pageable);
     }
 

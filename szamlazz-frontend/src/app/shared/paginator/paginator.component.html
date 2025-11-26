@@ -1,7 +1,7 @@
 <div class="paginator">
-  <button (click)="previous()" [disabled]="pageNumber === 0"> bal </button>
+  <button (click)="previous()" [disabled]="pageNumber === 0"> <span class="material-symbols-rounded">chevron_left</span> </button>
   
   <span>{{ pageNumber + 1 }}. oldal </span>
   
-  <button (click)="next()" [disabled]="pageNumber + 1 >= totalPages">jobb</button>
+  <button (click)="next()" [disabled]="pageNumber + 1 >= totalPages"><span class="material-symbols-rounded">chevron_right</span></button>
 </div>

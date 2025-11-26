@@ -1,19 +1,19 @@
 <table>
   <thead>
     <tr>
-      <th>Név</th>
-      <th>Foglalkozás</th>
-      <th>Aktív</th>
-      <th>Műveletek</th>
+      <th class="col-30">Név</th>
+      <th class="col-30">Foglalkozás</th>
+      <th class="col-30">Aktív</th>
+      <th class="col-10">Műveletek</th>
     </tr>
   </thead>
   <tbody>
       @for(user of users; track user){
           <tr>
           <td>{{ user.lastname }} {{ user.firstname }}</td>
-          <td>{{ user.job }}</td>
-          <td>{{ user.active }}</td>
-          <td> <app-custom-button title="Törlés" (clicked)="deleteEmitter.emit(user)"></app-custom-button> <app-custom-button title="Módosítás" (clicked)="updateEmitter.emit(user.id)"></app-custom-button> </td>
+          <td>{{ user.job | jobDisplay}}</td>
+          <td>{{ user.active | booleanToText }}</td>
+          <td> <app-custom-button title="Törlés" [type]="buttonType.DELETE" (clicked)="deleteEmitter.emit(user)"></app-custom-button> <app-custom-button title="Módosítás" (clicked)="updateEmitter.emit(user.id)"></app-custom-button> </td>
         </tr>
     }
   </tbody>
