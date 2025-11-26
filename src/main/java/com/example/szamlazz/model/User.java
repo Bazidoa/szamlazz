@@ -10,8 +10,7 @@ import java.sql.DriverPropertyInfo;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "users")
-@Getter
-@Setter
+@Data
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,5 +20,5 @@ public class User {
     String address;
     String telephone;
     Boolean active;
-    String job;
+    JobEnum job;
 }

@@ -1,5 +1,10 @@
 package com.example.szamlazz.model;
 
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@Builder
 public class UserVo {
     Long id;
     String firstname;
@@ -7,5 +12,5 @@ public class UserVo {
     String address;
     String telephone;
     Boolean active;
-    String job;
+    JobEnum job;
 }

@@ -1,6 +1,8 @@
 package com.example.szamlazz.service;
 
+import com.example.szamlazz.mapper.UserMapper;
 import com.example.szamlazz.model.User;
+import com.example.szamlazz.model.UserVo;
 import com.example.szamlazz.repository.UserRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,10 +14,12 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-  private final  UserRepository userRepository;
+  private final UserRepository userRepository;
+  private final UserMapper userMapper;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
+        this.userMapper = userMapper;
     }
 
     @Override
@@ -29,7 +33,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Long createUser() {
-        return userRepository.save(User.builder().firstname("Balazs").lastname("Gyongyosi").build()).getId();
+    public Long saveUser(UserVo userVo) {
+        return userRepository.save(userMapper.toUser(userVo)).getId();
     }
+
+  @Override
+  public void deleteUser(Long userId) {
+      userRepository.deleteById(userId);
+  }
 }
