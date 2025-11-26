@@ -1,4 +1,6 @@
-<app-user-table [users]="(users$ | async) || []"></app-user-table>
+<app-custom-button title="Létrehozás" (clicked)="onCreateUser()">
+</app-custom-button>
+<app-user-table [users]="(users$ | async) || []" (deleteEmitter)="onDelete($event)" (updateEmitter)="onUpdate($event)"></app-user-table>
 <app-paginator [pageNumber]="pageable.pageNumber" [pageSize]="pageable.pageSize" [totalElements]="totalElements"
     (pageChange)="onPageChange($event)">
 </app-paginator>
