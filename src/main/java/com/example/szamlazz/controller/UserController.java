@@ -41,9 +41,9 @@ public class UserController {
         return userService.findUsers(pageable);
     }
 
-    @GetMapping("/users-all")
-    public List<User> findUsers() {
-        return userService.getUsers();
+    @GetMapping("/{userId}")
+    public UserVo getUser(@PathVariable("userId") Long userId) {
+        return userService.getUser(userId);
     }
 
     @PostMapping("/create")
@@ -53,7 +53,7 @@ public class UserController {
 
   @PutMapping(value = "/update/{userId}")
   public ResponseEntity<Long> updateUser(@RequestBody @Validated final UserCreateRequest request,
-      @PathVariable("assetId") final Long userId){
+      @PathVariable("userId") final Long userId){
       UserVo userVo = userMapper.toUserVo(request);
       userVo.setId(userId);
     return ResponseEntity.ok(userService.saveUser(userVo));

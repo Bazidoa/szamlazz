@@ -1,1 +1,36 @@
-<p>user-create works!</p>
+<form [formGroup]="userForm">
+
+    <label>Firstname</label>
+    <input type="text" formControlName="firstname">
+    @if(userForm.get('firstname')?.invalid && userForm.get('firstname')?.touched){
+    <div>Firstname is required (2-64 characters)</div>
+    }
+
+    <label>Lastname</label>
+    <input type="text" formControlName="lastname">
+    @if (userForm.get('lastname')?.invalid && userForm.get('lastname')?.touched){
+    <div>
+        Lastname is required (2-64 characters)
+    </div>
+    }
+
+    <label>Address</label>
+    <input type="text" formControlName="address">
+    @if(userForm.get('address')?.invalid && userForm.get('address')?.touched){
+    <div>Max length is 128</div>
+    }
+
+    <label>Telephone</label>
+    <input type="text" formControlName="telephone">
+
+    <label>Job</label>
+    <select formControlName="job">
+        @for(job of jobOptions; track job){
+            <option [value]="job">{{ job }}</option>
+        }
+    </select>
+
+    <label>
+        <input type="checkbox" formControlName="active"> Active
+    </label>
+</form>

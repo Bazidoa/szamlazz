@@ -1,9 +1,9 @@
 export interface User {
-    id: number,
+    id?: number,
     firstname: string,
     lastname: string,
-    address: string,
-    telephone: string
+    address?: string | null,
+    telephone?: string | null
     active: boolean,
     job: string
 }

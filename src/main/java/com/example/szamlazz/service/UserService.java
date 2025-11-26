@@ -15,4 +15,6 @@ public interface UserService {
     public Long saveUser(UserVo request);
 
     public void deleteUser(Long userId);
+
+    public UserVo getUser(Long userId);
 }
