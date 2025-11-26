@@ -1,0 +1,14 @@
+com/example/szamlazz/repository/UserRepository.class
+com/example/szamlazz/model/UserCreateRequest$UserCreateRequestBuilder.class
+com/example/szamlazz/model/UserVo$UserVoBuilder.class
+com/example/szamlazz/model/User$UserBuilder.class
+com/example/szamlazz/service/UserService.class
+com/example/szamlazz/model/UserVo.class
+com/example/szamlazz/controller/UserController.class
+com/example/szamlazz/service/UserServiceImpl.class
+com/example/szamlazz/model/User.class
+com/example/szamlazz/SzamlazzApplication.class
+com/example/szamlazz/model/JobEnum.class
+com/example/szamlazz/mapper/UserMapper.class
+com/example/szamlazz/mapper/UserMapperImpl.class
+com/example/szamlazz/model/UserCreateRequest.class
