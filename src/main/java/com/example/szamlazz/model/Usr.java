@@ -3,15 +3,13 @@ package com.example.szamlazz.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.DriverPropertyInfo;
-
 @Entity
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "t_users")
 @Data
-public class User {
+public class Usr {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;

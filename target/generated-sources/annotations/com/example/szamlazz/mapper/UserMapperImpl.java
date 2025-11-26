@@ -1,43 +1,43 @@
 package com.example.szamlazz.mapper;
 
 import com.example.szamlazz.model.JobEnum;
-import com.example.szamlazz.model.User;
 import com.example.szamlazz.model.UserCreateRequest;
 import com.example.szamlazz.model.UserVo;
+import com.example.szamlazz.model.Usr;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-11-26T15:47:39+0100",
+    date = "2025-11-26T17:13:03+0100",
     comments = "version: 1.6.3, compiler: javac, environment: Java 17.0.6 (Amazon.com Inc.)"
 )
 @Component
 public class UserMapperImpl extends UserMapper {
 
     @Override
-    public User toUser(UserVo UserVo) {
+    public Usr toUser(UserVo UserVo) {
         if ( UserVo == null ) {
             return null;
         }
 
-        User.UserBuilder user = User.builder();
+        Usr.UsrBuilder usr = Usr.builder();
 
-        user.id( UserVo.getId() );
-        user.firstname( UserVo.getFirstname() );
-        user.lastname( UserVo.getLastname() );
-        user.address( UserVo.getAddress() );
-        user.telephone( UserVo.getTelephone() );
-        user.active( UserVo.getActive() );
+        usr.id( UserVo.getId() );
+        usr.firstname( UserVo.getFirstname() );
+        usr.lastname( UserVo.getLastname() );
+        usr.address( UserVo.getAddress() );
+        usr.telephone( UserVo.getTelephone() );
+        usr.active( UserVo.getActive() );
         if ( UserVo.getJob() != null ) {
-            user.job( Enum.valueOf( JobEnum.class, UserVo.getJob() ) );
+            usr.job( Enum.valueOf( JobEnum.class, UserVo.getJob() ) );
         }
 
-        return user.build();
+        return usr.build();
     }
 
     @Override
-    public UserVo toUserVo(User user) {
+    public UserVo toUserVo(Usr user) {
         if ( user == null ) {
             return null;
         }

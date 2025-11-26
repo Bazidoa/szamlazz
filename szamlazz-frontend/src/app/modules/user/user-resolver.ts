@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot } from '@angular/router';
 import { catchError, EMPTY, Observable } from 'rxjs';
-import { User } from './models/user-interface';
+import { Usr } from './models/user-interface';
 import { UserService } from './services/user.service';
 
 @Injectable({ providedIn: 'root' })
@@ -9,7 +9,7 @@ export class UserResolver {
     constructor(
         private userService: UserService
     ) { }
-    resolve(route: ActivatedRouteSnapshot): Observable<User> {
+    resolve(route: ActivatedRouteSnapshot): Observable<Usr> {
         const id = Number(route.paramMap.get('id'));
         if (!id) {
             return EMPTY;

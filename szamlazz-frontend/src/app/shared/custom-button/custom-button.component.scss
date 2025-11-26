@@ -1,0 +1,38 @@
+@use 'variables' as *;
+
+button {
+    padding: 0.75em 1.5em;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.delete {
+    background-color: $warn;
+    color: white;
+
+    &:hover {
+        background-color: $warn-hover;
+    }
+}
+
+.primary {
+    background-color: $primary;
+    color: white;
+
+    &:hover {
+        background-color: $primary-hover;
+    }
+
+}
+
+.secondary {
+    background-color: $secondary;
+    color: white;
+
+    &:hover {
+        background-color: $secondary-hover;
+    }
+}

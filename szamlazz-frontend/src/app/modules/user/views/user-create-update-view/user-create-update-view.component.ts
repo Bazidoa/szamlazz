@@ -6,20 +6,23 @@ import { CustomButtonComponent } from '../../../../shared/custom-button/custom-b
 import { NavigationService } from '../../../../shared/services/navigation.service';
 import { UserCreateComponent } from '../../components/user-create/user-create.component';
 import { UserForm } from '../../models/user-form.interface';
+import { Usr } from '../../models/user-interface';
 import { UserService } from '../../services/user.service';
-import { User } from '../../models/user-interface';
+import { ButtonType } from '../../../../shared/enums/button-type.enum';
 
 @Component({
   selector: 'app-user-create-update-view',
   imports: [UserCreateComponent, CommonModule, CustomButtonComponent],
   templateUrl: './user-create-update-view.component.html',
-  styleUrl: './user-create-update-view.component.scss'
+  styleUrls: ['./user-create-update-view.component.scss']
 })
 export class UserCreateUpdateViewComponent implements OnInit {
 
+  HUNGARIAN_PHONE_REGEX = /^(\+36|06)\s?([1-9]{1}[0-9])\s?\d{3}\s?\d{4}$/;
   userForm: FormGroup<UserForm>;
-  user: User;
+  user: Usr;
   isUpdate: boolean = false;
+  buttonType = ButtonType;
 
   constructor(
     private fb: FormBuilder,
@@ -50,7 +53,9 @@ export class UserCreateUpdateViewComponent implements OnInit {
         validators: [Validators.required, Validators.minLength(2), Validators.maxLength(64)]
       }),
       address: new FormControl<string | null>(this.user?.address ? this.user.address : '', [Validators.maxLength(128)]),
-      telephone: new FormControl<string | null>(this.user?.telephone ? this.user.telephone : '', [Validators.maxLength(128)]),
+      telephone: new FormControl<string | null>(this.user?.telephone ? this.user.telephone : '', [
+        Validators.pattern(this.HUNGARIAN_PHONE_REGEX)
+      ]),
       active: new FormControl<boolean>(this.user?.active ? this.user.active : false, { nonNullable: true }),
       job: new FormControl<string>(this.user?.job ? this.user.job : '', {
         nonNullable: true,
@@ -80,7 +85,7 @@ export class UserCreateUpdateViewComponent implements OnInit {
       let user = this.userForm.getRawValue();
       user = {
         ...user,
-        id : this.user.id
+        id: this.user.id
       }
       this.userService.updateUser(user).subscribe({
         next: () => this.navigationService.navigateToUserSearch(),

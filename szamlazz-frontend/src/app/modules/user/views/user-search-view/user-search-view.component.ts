@@ -6,7 +6,7 @@ import { Pageable } from '../../../../shared/pageable.interface';
 import { PaginatorComponent } from '../../../../shared/paginator/paginator.component';
 import { NavigationService } from '../../../../shared/services/navigation.service';
 import { UserTableComponent } from "../../components/user-table/user-table.component";
-import { User } from '../../models/user-interface';
+import { Usr } from '../../models/user-interface';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -17,14 +17,21 @@ import { UserService } from '../../services/user.service';
 })
 export class UserSearchViewComponent implements OnInit {
 
-  users$: Observable<User[]> = new Observable<User[]>();
+  users$: Observable<Usr[]> = new Observable<Usr[]>();
   pageable: Pageable = { pageNumber: 0, pageSize: 5, offset: 0, paged: true, unpaged: false }
   totalElements = 0
 
   constructor(
     private userService: UserService,
     private navigationService: NavigationService
-  ) { }
+  ) { 
+    // ezt alapvetően inkább ngrx storeban tárolnám, az egész paginationnel (és search fieldekkel) együtt 
+    // de azt hiszem ebben a scopeban az már túllőne a célon 
+    if(sessionStorage.getItem("user_page_number")){
+      this.pageable.pageNumber = Number(sessionStorage.getItem("user_page_number"));
+      sessionStorage.removeItem("user_page_number");
+    }
+  }
 
   ngOnInit() {
     this.searchUsers();
@@ -47,10 +54,10 @@ export class UserSearchViewComponent implements OnInit {
     this.navigationService.navigateToUserCreate();
   }
 
-  onDelete(user: User): void {
+  onDelete(user: Usr): void {
     if (!confirm("Biztosan ki szeretnéd törölni a " + user.lastname + " " + user.firstname + " nevű felhasználót?")) {
-    return;
-  }
+      return;
+    }
     this.userService.deleteUser(user.id!).subscribe({
       next: () => this.searchUsers(),
       error: err => console.log("ERROR FIRED:", err),
@@ -58,6 +65,7 @@ export class UserSearchViewComponent implements OnInit {
   }
 
   onUpdate(userId: number): void {
+    sessionStorage.setItem("user_page_number", this.pageable.pageNumber.toString());
     this.navigationService.navigateToUserUpdate(userId);
   }
 }

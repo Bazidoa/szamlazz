@@ -1,6 +1,7 @@
 package com.example.szamlazz.model;
 
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Builder;
 import lombok.Data;
@@ -20,10 +21,12 @@ public class UserCreateRequest {
   @Size(max = 128, message = "FIELD_VALIDATION_ERROR")
   String address;
 
-  @Size(max = 128, message = "FIELD_VALIDATION_ERROR")
+  @Pattern(regexp = "(\\+36|06)\\s?([1-9]{1}[0-9])\\s?\\d{3}\\s?\\d{4}", message = "FIELD_VALIDATION_ERROR")
   String telephone;
 
+  @NotNull
   Boolean active;
 
+  @NotNull
   JobEnum job;
 }

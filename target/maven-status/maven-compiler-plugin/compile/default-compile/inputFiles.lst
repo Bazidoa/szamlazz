@@ -1,10 +1,11 @@
 /home/dwp7537/projects/private/szamlazz/src/main/java/com/example/szamlazz/SzamlazzApplication.java
+/home/dwp7537/projects/private/szamlazz/src/main/java/com/example/szamlazz/WebConfig.java
 /home/dwp7537/projects/private/szamlazz/src/main/java/com/example/szamlazz/controller/UserController.java
 /home/dwp7537/projects/private/szamlazz/src/main/java/com/example/szamlazz/mapper/UserMapper.java
 /home/dwp7537/projects/private/szamlazz/src/main/java/com/example/szamlazz/model/JobEnum.java
-/home/dwp7537/projects/private/szamlazz/src/main/java/com/example/szamlazz/model/User.java
 /home/dwp7537/projects/private/szamlazz/src/main/java/com/example/szamlazz/model/UserCreateRequest.java
 /home/dwp7537/projects/private/szamlazz/src/main/java/com/example/szamlazz/model/UserVo.java
+/home/dwp7537/projects/private/szamlazz/src/main/java/com/example/szamlazz/model/Usr.java
 /home/dwp7537/projects/private/szamlazz/src/main/java/com/example/szamlazz/repository/UserRepository.java
 /home/dwp7537/projects/private/szamlazz/src/main/java/com/example/szamlazz/service/UserService.java
 /home/dwp7537/projects/private/szamlazz/src/main/java/com/example/szamlazz/service/UserServiceImpl.java
