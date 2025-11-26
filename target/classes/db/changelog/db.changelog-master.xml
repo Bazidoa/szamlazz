@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+          http://www.liquibase.org/xml/ns/dbchangelog
+          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="1" author="you">
+        <createTable tableName="users">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="firstname" type="VARCHAR(255)"/>
+            <column name="lastname" type="VARCHAR(255)"/>
+            <column name="active" type="BOOLEAN"/>
+            <column name="job" type="VARCHAR(255)"/>
+            <column name="address" type="VARCHAR(255)"/>
+            <column name="telephone" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="you">
+        <insert tableName="users">
+            <column name="firstname" value="Nora"/>
+            <column name="lastname" value="Kiss"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="job" value="HENTES"/>
+            <column name="address" value="Budapest"/>
+            <column name="telephone" value="06301234567"/>
+        </insert>
+        <insert tableName="users">
+            <column name="firstname" value="Balázs"/>
+            <column name="lastname" value="Nagy"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="job" value="KERTESZ"/>
+            <column name="address" value="Debrecen"/>
+            <column name="telephone" value="06301234568"/>
+        </insert>
+        <insert tableName="users">
+            <column name="firstname" value="Anna"/>
+            <column name="lastname" value="Tóth"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="job" value="PEK"/>
+            <column name="address" value="Szeged"/>
+            <column name="telephone" value="06301234569"/>
+        </insert>
+        <insert tableName="users">
+            <column name="firstname" value="Máté"/>
+            <column name="lastname" value="Farkas"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="job" value="HENTES"/>
+            <column name="address" value="Győr"/>
+            <column name="telephone" value="06301234570"/>
+        </insert>
+        <insert tableName="users">
+            <column name="firstname" value="Eszter"/>
+            <column name="lastname" value="Horváth"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="job" value="KERTESZ"/>
+            <column name="address" value="Pécs"/>
+            <column name="telephone" value="06301234571"/>
+        </insert>
+        <insert tableName="users">
+            <column name="firstname" value="Gábor"/>
+            <column name="lastname" value="Kovács"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="job" value="PEK"/>
+            <column name="address" value="Miskolc"/>
+            <column name="telephone" value="06301234572"/>
+        </insert>
+        <insert tableName="users">
+            <column name="firstname" value="Zsófia"/>
+            <column name="lastname" value="Varga"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="job" value="HENTES"/>
+            <column name="address" value="Nyíregyháza"/>
+            <column name="telephone" value="06301234573"/>
+        </insert>
+        <insert tableName="users">
+            <column name="firstname" value="Dániel"/>
+            <column name="lastname" value="Molnár"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="job" value="KERTESZ"/>
+            <column name="address" value="Kecskemét"/>
+            <column name="telephone" value="06301234574"/>
+        </insert>
+        <insert tableName="users">
+            <column name="firstname" value="Réka"/>
+            <column name="lastname" value="Németh"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="job" value="PEK"/>
+            <column name="address" value="Székesfehérvár"/>
+            <column name="telephone" value="06301234575"/>
+        </insert>
+        <insert tableName="users">
+            <column name="firstname" value="Péter"/>
+            <column name="lastname" value="Balogh"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="job" value="HENTES"/>
+            <column name="address" value="Eger"/>
+            <column name="telephone" value="06301234576"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
