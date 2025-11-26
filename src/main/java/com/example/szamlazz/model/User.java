@@ -20,5 +20,6 @@ public class User {
     String address;
     String telephone;
     Boolean active;
+    @Enumerated(EnumType.STRING)
     JobEnum job;
 }

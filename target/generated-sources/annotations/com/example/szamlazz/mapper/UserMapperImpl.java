@@ -1,5 +1,6 @@
 package com.example.szamlazz.mapper;
 
+import com.example.szamlazz.model.JobEnum;
 import com.example.szamlazz.model.User;
 import com.example.szamlazz.model.UserCreateRequest;
 import com.example.szamlazz.model.UserVo;
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-11-26T11:30:25+0100",
+    date = "2025-11-26T11:38:24+0100",
     comments = "version: 1.6.3, compiler: javac, environment: Java 17.0.6 (Amazon.com Inc.)"
 )
 @Component
@@ -28,7 +29,9 @@ public class UserMapperImpl extends UserMapper {
         user.address( UserVo.getAddress() );
         user.telephone( UserVo.getTelephone() );
         user.active( UserVo.getActive() );
-        user.job( UserVo.getJob() );
+        if ( UserVo.getJob() != null ) {
+            user.job( Enum.valueOf( JobEnum.class, UserVo.getJob() ) );
+        }
 
         return user.build();
     }
@@ -47,7 +50,9 @@ public class UserMapperImpl extends UserMapper {
         userVo.address( user.getAddress() );
         userVo.telephone( user.getTelephone() );
         userVo.active( user.getActive() );
-        userVo.job( user.getJob() );
+        if ( user.getJob() != null ) {
+            userVo.job( user.getJob().name() );
+        }
 
         return userVo.build();
     }
@@ -65,7 +70,9 @@ public class UserMapperImpl extends UserMapper {
         userVo.address( userCreateRequest.getAddress() );
         userVo.telephone( userCreateRequest.getTelephone() );
         userVo.active( userCreateRequest.getActive() );
-        userVo.job( userCreateRequest.getJob() );
+        if ( userCreateRequest.getJob() != null ) {
+            userVo.job( userCreateRequest.getJob().name() );
+        }
 
         return userVo.build();
     }

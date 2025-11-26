@@ -12,5 +12,5 @@ public class UserVo {
     String address;
     String telephone;
     Boolean active;
-    JobEnum job;
+    String job;
 }
