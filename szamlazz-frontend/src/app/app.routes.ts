@@ -6,7 +6,7 @@ import { UserResolver } from './modules/user/user-resolver';
 export const userRoutePaths = {
     searchUsers: 'search-users',
     createUser: 'create-user',
-    updateUser: 'update-user',
+    updateUser: 'update-user/:id',
 };
 
 export const routes: Routes = [

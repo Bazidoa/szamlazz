@@ -25,6 +25,10 @@ export class UserService {
         return this.http.get<Page<User>>(`${this.USER_API_ENDPOINT}search`, { params });
     }
 
+    getUser(userId: number): Observable<User> {
+        return this.http.get<User>(`${this.USER_API_ENDPOINT}${userId}`);
+    }
+
     createUser(user: User) {
         let headers = this.getHttpHeaders();
         return this.http.post<any>(`${this.USER_API_ENDPOINT}create`, user, { headers });
@@ -32,6 +36,7 @@ export class UserService {
 
     updateUser(user: User) {
         let headers = this.getHttpHeaders();
+        console.log(user)
         return this.http.put<any>(`${this.USER_API_ENDPOINT}update/${user.id}`, user, { headers });
     }
 

@@ -21,4 +21,10 @@ export class NavigationService {
             this.router.navigateByUrl('search-users');
         });
     }
+
+    navigateToUserUpdate(userId: number): void {
+        this.ngZone.run(() => {
+            this.router.navigateByUrl(`update-user/${userId}`);
+        });
+    }
 }

@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { CustomButtonComponent } from '../../../../shared/custom-button/custom-button.component';
 import { NavigationService } from '../../../../shared/services/navigation.service';
 import { UserCreateComponent } from '../../components/user-create/user-create.component';
 import { UserForm } from '../../models/user-form.interface';
 import { UserService } from '../../services/user.service';
+import { User } from '../../models/user-interface';
 
 @Component({
   selector: 'app-user-create-update-view',
@@ -16,12 +18,22 @@ import { UserService } from '../../services/user.service';
 export class UserCreateUpdateViewComponent implements OnInit {
 
   userForm: FormGroup<UserForm>;
+  user: User;
+  isUpdate: boolean = false;
 
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private navigationService: NavigationService
-  ) { }
+    private navigationService: NavigationService,
+    private route: ActivatedRoute
+  ) {
+    this.route.data.subscribe((data) => {
+      if (data['user']) {
+        this.isUpdate = true;
+        this.user = data['user'];
+      }
+    })
+  }
 
   ngOnInit(): void {
     this.createUserForm();
@@ -29,18 +41,18 @@ export class UserCreateUpdateViewComponent implements OnInit {
 
   createUserForm() {
     this.userForm = this.fb.group({
-      firstname: new FormControl<string>('', {
+      firstname: new FormControl<string>(this.user?.firstname ? this.user.firstname : '', {
         nonNullable: true,
         validators: [Validators.required, Validators.minLength(2), Validators.maxLength(64)]
       }),
-      lastname: new FormControl<string>('', {
+      lastname: new FormControl<string>(this.user?.lastname ? this.user.lastname : '', {
         nonNullable: true,
         validators: [Validators.required, Validators.minLength(2), Validators.maxLength(64)]
       }),
-      address: new FormControl<string | null>('', [Validators.maxLength(128)]),
-      telephone: new FormControl<string | null>('', [Validators.maxLength(128)]),
-      active: new FormControl<boolean>(false, { nonNullable: true }),
-      job: new FormControl<string>('', {
+      address: new FormControl<string | null>(this.user?.address ? this.user.address : '', [Validators.maxLength(128)]),
+      telephone: new FormControl<string | null>(this.user?.telephone ? this.user.telephone : '', [Validators.maxLength(128)]),
+      active: new FormControl<boolean>(this.user?.active ? this.user.active : false, { nonNullable: true }),
+      job: new FormControl<string>(this.user?.job ? this.user.job : '', {
         nonNullable: true,
         validators: [Validators.required]
       })
@@ -61,6 +73,32 @@ export class UserCreateUpdateViewComponent implements OnInit {
 
   cancel(): void {
     this.navigationService.navigateToUserSearch();
+  }
+
+  updateUser(): void {
+    if (this.userForm.valid) {
+      let user = this.userForm.getRawValue();
+      user = {
+        ...user,
+        id : this.user.id
+      }
+      this.userService.updateUser(user).subscribe({
+        next: () => this.navigationService.navigateToUserSearch(),
+        error: (err) => console.error('Error updating user:', err)
+      });
+    } else {
+      this.userForm.markAllAsTouched();
+    }
+  }
+
+  deleteUser(): void {
+    if (!confirm("Biztosan ki szeretnéd törölni a " + this.user.lastname + " " + this.user.firstname + " nevű felhasználót?")) {
+      return;
+    }
+    this.userService.deleteUser(this.user.id!).subscribe({
+      next: () => this.navigationService.navigateToUserSearch(),
+      error: err => console.log("ERROR FIRED:", err),
+    });
   }
 
 }

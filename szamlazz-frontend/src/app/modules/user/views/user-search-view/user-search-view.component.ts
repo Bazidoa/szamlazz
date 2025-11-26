@@ -58,6 +58,6 @@ export class UserSearchViewComponent implements OnInit {
   }
 
   onUpdate(userId: number): void {
-    //navigate to update with resolver
+    this.navigationService.navigateToUserUpdate(userId);
   }
 }
