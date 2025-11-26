@@ -9,7 +9,7 @@ import java.sql.DriverPropertyInfo;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "users")
+@Table(name = "t_users")
 @Data
 public class User {
     @Id

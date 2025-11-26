@@ -1,0 +1,4 @@
+<app-user-table [users]="(users$ | async) || []"></app-user-table>
+<app-paginator [pageNumber]="pageable.pageNumber" [pageSize]="pageable.pageSize" [totalElements]="totalElements"
+    (pageChange)="onPageChange($event)">
+</app-paginator>

@@ -1,0 +1,26 @@
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Address</th>
+      <th>Telephone</th>
+      <th>Job</th>
+      <th>Active</th>
+    </tr>
+  </thead>
+  <tbody>
+      @for(user of users; track user){
+          <tr>
+          <td>{{ user.id }}</td>
+          <td>{{ user.firstname }}</td>
+          <td>{{ user.lastname }}</td>
+          <td>{{ user.address }}</td>
+          <td>{{ user.telephone }}</td>
+          <td>{{ user.job }}</td>
+          <td>{{ user.active }}</td>
+        </tr>
+    }
+  </tbody>
+</table>
