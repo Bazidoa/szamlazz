@@ -9,6 +9,7 @@ import { UserForm } from '../../models/user-form.interface';
 import { Usr } from '../../models/user-interface';
 import { UserService } from '../../services/user.service';
 import { ButtonType } from '../../../../shared/enums/button-type.enum';
+import { HUNGARIAN_PHONE_REGEX } from '../../../../shared/services/form-validator-helpers';
 
 @Component({
   selector: 'app-user-create-update-view',
@@ -18,7 +19,6 @@ import { ButtonType } from '../../../../shared/enums/button-type.enum';
 })
 export class UserCreateUpdateViewComponent implements OnInit {
 
-  HUNGARIAN_PHONE_REGEX = /^(\+36|06)\s?([1-9]{1}[0-9])\s?\d{3}\s?\d{4}$/;
   userForm: FormGroup<UserForm>;
   user: Usr;
   isUpdate: boolean = false;
@@ -35,7 +35,7 @@ export class UserCreateUpdateViewComponent implements OnInit {
         this.isUpdate = true;
         this.user = data['user'];
       }
-    })
+    });
   }
 
   ngOnInit(): void {
@@ -54,7 +54,7 @@ export class UserCreateUpdateViewComponent implements OnInit {
       }),
       address: new FormControl<string | null>(this.user?.address ? this.user.address : '', [Validators.maxLength(128)]),
       telephone: new FormControl<string | null>(this.user?.telephone ? this.user.telephone : '', [
-        Validators.pattern(this.HUNGARIAN_PHONE_REGEX)
+        Validators.pattern(HUNGARIAN_PHONE_REGEX)
       ]),
       active: new FormControl<boolean>(this.user?.active ? this.user.active : false, { nonNullable: true }),
       job: new FormControl<string>(this.user?.job ? this.user.job : '', {

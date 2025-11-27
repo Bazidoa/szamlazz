@@ -15,6 +15,12 @@ h2 database:
 http://localhost:8080/h2-console/
 JDBC URL: jdbc:h2:mem:testdb
 
+test:
+backenden a UserServiceImplTest osztályban készítettem néhány unit tesztet, IntelliJ-ben futtatható 
+frontenden a user-create-update-view.component.spec-ben készítettem teszteket ng test-tel futtatható
+	a többi fájlban ha kért providert azt hozzáadtam hogy kizöldüljön :) 
+	(karma browser megnyílik - általában jest-tel dolgozok de nem akartam még több dependenciát)
+
 Notes:
 
 GPT5
