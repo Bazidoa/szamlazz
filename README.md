@@ -14,6 +14,9 @@ h2 database:
 http://localhost:8080/h2-console/
 JDBC URL: jdbc:h2:mem:testdb
 
+test:
+ng test (should open karma browser - usually i work with jest but didnt want to add more dependencies)
+
 Notes:
 
 GPT5
